@@ -1,0 +1,145 @@
+Plateau bien lu
+Plateau y_max 
+25
+Plateau x_max 
+44
+    0123456789012345678901234567890123456789
+000 OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO.......
+001 OOOOOOOOOOOOOOOOOOOOOO.OOO..OO..........
+002 OO.OOOOOOOOOOOOOOOO...OOOO...O..........
+003 .OOOOO..OOOOO.OOOO.......O..............
+004 ........................................
+005 ........................................
+006 ........................................
+007 ........................................
+008 ........................................
+009 .........................x..............
+010 ......................x.xx..............
+011 ......................xxxxXX............
+012 .....................XXXX.XXX...........
+013 .....................XXXXXXXX...........
+014 .....................XXXXXXXXX..XX......
+015 ....................XXXXXXXXXXXXXX......
+016 ...................XXXXXXXXXX.XXXX......
+017 ....................XXXXXXXXXXX.X.......
+018 .......................XXX.XX.XX........
+019 .......................XX.XX.XXXX.......
+020 .............................XX.........
+021 ..............................X.........
+022 ........................................
+023 ........................................
+Piece bien lu
+
+Piece y_max 
+3
+Piece x_max 
+3
+..*
+..*
+.**
+
+Coord de la piece adverse x
+0
+Coord de la piece adverse y
+0
+pute
+
+ON A TROUVE
+2 -1
+
+ON A TROUVE
+0 25
+
+ON A TROUVE
+0 29
+
+ON A TROUVE
+0 30
+
+ON A TROUVE
+1 17
+
+ON A TROUVE
+1 18
+
+ON A TROUVE
+1 19
+
+ON A TROUVE
+1 20
+
+ON A TROUVE
+1 24
+
+ON A TROUVE
+1 26
+
+ON A TROUVE
+2 0
+
+ON A TROUVE
+2 4
+
+ON A TROUVE
+2 5
+
+ON A TROUVE
+2 11
+
+ON A TROUVE
+2 16
+
+ON A TROUVE
+2 20
+
+ON A TROUVE
+2 21
+
+ON A TROUVE
+2 22
+
+ON A TROUVE
+2 27
+
+ON A TROUVE
+3 -1
+
+ON A TROUVE
+3 0
+
+ON A TROUVE
+3 1
+
+ON A TROUVE
+3 2
+
+ON A TROUVE
+3 3
+
+ON A TROUVE
+3 6
+
+ON A TROUVE
+3 7
+
+ON A TROUVE
+3 8
+
+ON A TROUVE
+3 9
+
+ON A TROUVE
+3 10
+
+ON A TROUVE
+3 12
+
+ON A TROUVE
+3 13
+
+ON A TROUVE
+3 14
+
+ON A TROUVE
+3 15
+debugdebug
