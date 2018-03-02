@@ -6,7 +6,7 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/28 15:01:43 by vguerand          #+#    #+#             */
-/*   Updated: 2018/02/10 15:11:28 by vguerand         ###   ########.fr       */
+/*   Updated: 2018/03/02 04:40:49 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,11 @@
 # define LETTER_2 'X'
 # define N_ZONE  5 // 2^n + 1
 # define ZONE_SIZE 5
-# define GRAPH 0
-# define WIN_SIZE 1000
 # define MODE 1
+# define INIT 100000
+
 # include <stdio.h>
+
 
 typedef struct		s_pos
 {
@@ -30,6 +31,11 @@ typedef struct		s_pos
 	int 			y;
 }					t_pos;
 
+typedef struct		s_star
+{
+	t_pos 			pos;
+	struct s_star	*next;
+}					t_star;
 
 typedef struct		s_header
 {
@@ -62,13 +68,20 @@ typedef struct		s_tab
 	char 			letter_1;
 	char 			letter_2;
 	t_sol 			*sol;
+	t_star 			*star;
 	t_mob 			plateau;
 	t_mob 			piece;
 }					t_tab;
 
-t_pos				find_zone(t_sol *sol, t_pos coord);
+t_pos 	find_nbr_sol(t_sol *sol, t_pos coord, int zone);
 
-t_pos				find_nbr_sol(t_sol *sol, t_pos coord);
+t_pos 				find_sol(t_sol *sol, t_pos coord, int zone);
+
+t_pos				find_zone(t_sol *sol, t_pos coord, int zone);
+
+int					what_zone(t_header header, t_pos coord, int zone);
+
+t_star 				*ft_return_star(t_mob p, char letter);
 
 void				ft_free(t_tab *p);
 
@@ -90,17 +103,10 @@ void				ft_first_read(t_tab *p);
 
 void 				ft_aff_lst(t_sol *sol);
 
-int					what_zone(t_header header, t_pos coord);
-
 int 				ft_solv(t_tab *p);
 
-int 				ft_sol_opti(t_tab *p);
-
-void 				ft_find_where(t_tab *p);
+double					ft_distance(t_pos A, t_pos B);
 
 double				ft_sqrt(int s, double x);
-
-int					what_zone(t_header header, t_pos coord);
-
 
 #endif

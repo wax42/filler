@@ -6,7 +6,7 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/29 16:36:57 by vguerand          #+#    #+#             */
-/*   Updated: 2018/02/03 17:21:53 by vguerand         ###   ########.fr       */
+/*   Updated: 2018/02/22 13:51:54 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,14 @@
 # include "../libft/libft.h"
 # include "mlx.h"
 # include <stdio.h>
+
+
+typedef struct		s_rgb
+{
+	int				r;
+	int				g;
+	int				b;
+}					t_rgb;
 
 
 typedef struct		s_pos

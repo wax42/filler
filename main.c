@@ -6,7 +6,7 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/28 14:59:19 by vguerand          #+#    #+#             */
-/*   Updated: 2018/02/16 00:26:16 by vguerand         ###   ########.fr       */
+/*   Updated: 2018/02/27 21:18:14 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,9 @@ void 	ft_free(t_tab *p)
 int main(void)
 {
 	t_tab p;
+	int fd;
 
-//	fd  = open("./test",O_CREAT|O_WRONLY, 0777);
+	fd  = open("./test",O_CREAT|O_WRONLY, 0777);
 	ft_first_read(&p);
 	while (1)
 	{
