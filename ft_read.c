@@ -6,7 +6,7 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/28 18:05:22 by vguerand          #+#    #+#             */
-/*   Updated: 2018/03/01 03:16:10 by vguerand         ###   ########.fr       */
+/*   Updated: 2018/03/02 16:36:16 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void ft_read(t_mob *p, int bol)
 	(bol == 0) ? (decal_y = DECAL_Y) : (decal_y = 0);
 	ft_read_size(p, decal_x, decal_y);
 	if (!(p->tab = (char**)malloc(sizeof(char*) * (p->max.y + 1))))
-		ft_putendl_fd("ERROR MALLOC", 1);
+		ft_putendl_fd("ERROR MALLOC", 3);
 	y = 0;
 	while (y < p->max.y)
 	{

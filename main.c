@@ -6,7 +6,7 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/28 14:59:19 by vguerand          #+#    #+#             */
-/*   Updated: 2018/02/27 21:18:14 by vguerand         ###   ########.fr       */
+/*   Updated: 2018/03/02 17:34:02 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,6 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
-
-void  ft_aff_lst(t_sol *sol)
-{
-	if (sol->header.val == 0)
-	{
-		aff(sol->pos);
-		return ;
-	}
-	if (sol->one)
-		ft_aff_lst(sol->one);
-	if (sol->two)
-		ft_aff_lst(sol->two);
-	if (sol->three)
-		ft_aff_lst(sol->three);
-	if (sol->four)
-		ft_aff_lst(sol->four);
-}
 
 
 void ft_lst_free_quadree(t_sol *sol)
@@ -90,7 +73,6 @@ int main(void)
 	ft_first_read(&p);
 	while (1)
 	{
-	//	ft_putstr("New Plateau\n");
 		if (ft_solv(&p) == 0)
 			break ;
 	}

@@ -6,7 +6,7 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 15:20:54 by vguerand          #+#    #+#             */
-/*   Updated: 2018/03/02 04:13:29 by vguerand         ###   ########.fr       */
+/*   Updated: 2018/03/02 17:57:01 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,22 @@ void ft_put_star(t_mob *p, int x, int y, char letter)
 	{
 		if (y != DECAL_Y)
 		{
-			if (p->tab[y - 1][x] != letter)
+			if (p->tab[y - 1][x] != LETTER_1 && p->tab[y - 1][x] != LETTER_2)
 				p->tab[y - 1][x] = '*';
 		}
 		if (y >= p->max.y)
 		{
-			if (p->tab[y + 1][x] != letter)
+			if (p->tab[y + 1][x] != LETTER_1 && p->tab[y + 1][x] != LETTER_2)
 				p->tab[y + 1][x] = '*';
 		}
 		if (x >= p->max.x)
 		{
-			if (p->tab[y][x + 1] != letter)
+			if (p->tab[y][x + 1] != LETTER_1 && p->tab[y][x + 1] != LETTER_1)
 				p->tab[y][x + 1] = '*';
 		}
 		if (x != DECAL_X)
 		{
-			if (p->tab[y][x - 1] != letter)
+			if (p->tab[y][x - 1] != LETTER_1 && p->tab[y][x - 1] != LETTER_2)
 				p->tab[y][x - 1] = '*';
 		}
 	}
@@ -76,19 +76,25 @@ t_star 		*ft_return_star(t_mob p, char letter)
 
 	pos.y = -p.max.y;
 	pos.x = -p.max.x;
-	header = ft_new_star(pos);
+	tmp = ft_new_star(pos);
 	ft_creat_star(&p, letter);
-	tmp = header;
+	header = tmp;
 	pos.y = DECAL_Y;
 	while (pos.y < p.max.y)
 	{
 		pos.x = DECAL_X;
 		while (pos.x < p.max.x)
 		{
+			// ft_putchar_fd(p.tab[pos.y][pos.x], 3);
 			if (p.tab[pos.y][pos.x] == '*')
+			{
+				ft_putstr_fd("trouver une solutiion", 3);
 				tmp->next = ft_new_star(pos);
+				tmp = tmp->next;
+			}
 			pos.x++;
 		}
+		// ft_putchar_fd('\n', 3);
 		pos.y++;
 	}
 	return (header);

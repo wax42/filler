@@ -6,7 +6,7 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/25 11:34:34 by vguerand          #+#    #+#             */
-/*   Updated: 2018/02/10 15:11:46 by vguerand         ###   ########.fr       */
+/*   Updated: 2018/03/02 16:28:19 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,7 +154,7 @@ t_sol *ft_find_sol(t_tab p)
 				sol->next = tmp;
 				sol = sol->next;
 				tmp->header.val = 0;
-				ft_place_zone(header, tmp);
+				//ft_place_zone(header, tmp);
 			}
 			x++;
 		}
