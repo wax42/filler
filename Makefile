@@ -6,7 +6,7 @@
 #    By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/28 15:39:16 by vguerand          #+#    #+#              #
-#    Updated: 2018/03/02 01:02:11 by vguerand         ###   ########.fr        #
+#    Updated: 2018/03/06 01:16:46 by vguerand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ CFLAGS = -Wall -Wextra -Werror -g
 
 HEAD = filler.h
 
-SRC = recherche_zone.c ft_what_zone.c ft_creat_lst.c ft_star.c ft_solv.c main.c ft_read.c ft_place_where.c ft_sqrt.c
+SRC = ft_creat_lst.c ft_star.c ft_solv.c main.c ft_read.c ft_place_where.c ft_sqrt.c
 
 
 OBJ = $(patsubst %.c,%.o,$(addprefix $(PATH_SRC), $(SRC)))

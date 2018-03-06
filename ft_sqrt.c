@@ -6,7 +6,7 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/05 16:17:27 by vguerand          #+#    #+#             */
-/*   Updated: 2018/02/05 16:28:43 by vguerand         ###   ########.fr       */
+/*   Updated: 2018/03/06 01:15:44 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,10 @@ double ft_sqrt(int s, double x)
 		return (x);
 	else
 		return (ft_sqrt(s, x_next));
+}
+
+double	ft_distance(t_pos A, t_pos B)
+{
+	return (ft_sqrt(((B.x - A.x) * (B.x - A.x)) + ((B.y - A.y) * \
+	(B.y - A.y)), -1));
 }

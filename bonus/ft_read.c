@@ -6,7 +6,7 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/28 18:05:22 by vguerand          #+#    #+#             */
-/*   Updated: 2018/02/22 14:10:45 by vguerand         ###   ########.fr       */
+/*   Updated: 2018/03/06 01:24:47 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,60 +16,6 @@ int		rgb_to_hexa(int r, int g, int b)
 {
 	return ((r & 0xff) << 16) + ((g & 0xff) << 8) + (b & 0xff);
 }
-
-t_rgb	hsv_to_rgb(int h, int s, int v)
-{
-	rgb rgb;
-	int ti;
-	int f;
-	int l
-	int m;
-	int n;
-
-	ti = (t / 60) % 6;
-	f = (t / 60) - ti;
-	l = v * (1 - s);
-	m = v * (1 - f * s);
-	n = v * (1 - (1 - f) * s);
-	if (ti == 0)
-	{
-		rgb.r = v;
-		rgb.g = n;
-		rgb.b = l;
-	}
-	else if (ti == 1)
-	{
-		rgb.r = m;
-		rgb.g = v;
-		rgb.b = l;
-	}
-	else if (ti == 2)
-	{
-		rgb.r = l;
-		rgb.g = v;
-		rgb.b = n;
-	}
-	else if (ti == 3)
-	{
-		rgb.r = l;
-		rgb.g = m;
-		rgb.b = v;
-	}
-	else if (ti == 4)
-	{
-		rgb.r = n;
-		rgb.g = l;
-		rgb.b = v;
-	}
-	else if (ti == 5)
-	{
-		rgb.r = v;
-		rgb.g = l;
-		rgb.b = m;
-	}
-	return (rgb);
-}
-
 
 void ft_trace_carre(t_pos taille, t_mlx *p, t_pos pos, int color)
 {
