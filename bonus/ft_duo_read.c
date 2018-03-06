@@ -6,25 +6,20 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/02 04:13:50 by vguerand          #+#    #+#             */
-/*   Updated: 2018/03/06 08:35:42 by vguerand         ###   ########.fr       */
+/*   Updated: 2018/03/06 18:19:17 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bonus.h"
 
-static void	ft_read_size(t_pos *p, int fd)
+static char		*ft_read_size2(char *line, int fd, int *i, int *ret)
 {
-	char	*line;
-	int		i;
-	int		ret;
-
-	i = 0;
-	while ((ret = get_next_line(fd, &line)))
+	while ((*ret = get_next_line(fd, &line)))
 	{
 		(TERMINAL) ? ft_putendl(line) : NULL;
 		if (ft_strstr(line, "Piece"))
 		{
-			i = 5;
+			*i = 5;
 			break ;
 		}
 		if (ft_strstr(line, "error") || ft_strstr(line, "got"))
@@ -42,6 +37,18 @@ static void	ft_read_size(t_pos *p, int fd)
 		}
 		ft_strdel(&line);
 	}
+	return (line);
+}
+
+static void		ft_read_size(t_pos *p, int fd)
+{
+	char	*line;
+	int		i;
+	int		ret;
+
+	i = 0;
+	line = NULL;
+	line = ft_read_size2(line, fd, &i, &ret);
 	if (ret != 1)
 		ft_exit(4);
 	if (i == 0)
@@ -52,58 +59,16 @@ static void	ft_read_size(t_pos *p, int fd)
 	ft_strdel(&line);
 }
 
-void		ft_trace_piece(char *str, t_mlx *p, t_pos pos, int color)
+int				rgb_to_hexa(int r, int g, int b)
 {
-	int i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == '*')
-		{
-			ft_trace_carre(p->taille, p, pos, color);
-		}
-		pos.x += p->taille.x;
-		i++;
-	}
+	return ((r & 0xff) << 16) + ((g & 0xff) << 8) + (b & 0xff);
 }
 
-void		ft_put_piece(t_mlx *p, t_pos pos, int color, int free_bol)
+static int		ft_duo_read2(t_mlx *p, int y)
 {
-	int y;
-
-	y = 0;
-	while (y < p->max.y)
-	{
-		ft_trace_piece(p->tab[y], p, pos, color);
-		pos.y += p->taille.y;
-		if (free_bol == 1)
-			ft_strdel(&p->tab[y]);
-		y++;
-	}
-	if (free_bol == 1)
-	{
-		ft_strdel(&p->tab[y]);
-		free(p->tab);
-		p->tab = NULL;
-	}
-}
-
-void		ft_duo_read(t_mlx *p)
-{
-	int		y;
-	int		i;
-	char	*line;
 	int		ret;
+	char	*line;
 
-	if (p->letter == LETTER_1)
-		ft_put_piece(p, p->pos, rgb_to_hexa(COLOR_J1), 1);
-	else if (p->letter == LETTER_2)
-		ft_put_piece(p, p->pos, rgb_to_hexa(COLOR_J2), 1);
-	ft_read_size(&p->max, p->fd);
-	y = 0;
-	if (!(p->tab = (char**)malloc(sizeof(char*) * p->max.y + 2)))
-		ft_exit(1);
 	while ((ret = get_next_line(p->fd, &p->tab[y])))
 	{
 		(PIECE) ? ft_putendl(p->tab[y]) : NULL;
@@ -123,8 +88,23 @@ void		ft_duo_read(t_mlx *p)
 		}
 		y++;
 	}
-	if (ret != 1)
-		ft_exit(4);
+	(ret != 1) ? ft_exit(4) : 0;
+	return (y);
+}
+
+void			ft_duo_read(t_mlx *p)
+{
+	int		y;
+	int		i;
+
+	if (p->letter == LETTER_1)
+		ft_put_piece(p, p->pos, rgb_to_hexa(COLOR_J1), 1);
+	else if (p->letter == LETTER_2)
+		ft_put_piece(p, p->pos, rgb_to_hexa(COLOR_J2), 1);
+	ft_read_size(&p->max, p->fd);
+	if (!(p->tab = (char**)malloc(sizeof(char*) * p->max.y + 2)))
+		ft_exit(1);
+	y = ft_duo_read2(p, 0);
 	p->letter = p->tab[y][6];
 	i = 11;
 	p->pos.y = ft_atoi(p->tab[y] + i) * p->taille.y;

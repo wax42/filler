@@ -6,16 +6,11 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/28 18:05:22 by vguerand          #+#    #+#             */
-/*   Updated: 2018/03/06 08:30:06 by vguerand         ###   ########.fr       */
+/*   Updated: 2018/03/06 18:11:01 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bonus.h"
-
-int			rgb_to_hexa(int r, int g, int b)
-{
-	return ((r & 0xff) << 16) + ((g & 0xff) << 8) + (b & 0xff);
-}
 
 void		ft_trace_carre(t_pos taille, t_mlx *p, t_pos pos, int color)
 {
@@ -34,6 +29,32 @@ void		ft_trace_carre(t_pos taille, t_mlx *p, t_pos pos, int color)
 	}
 }
 
+static void	ft_trace_ligne_cond(char *str, t_mlx *p, t_pos *pos, int i)
+{
+	if (str[i] == LETTER_1 + 32)
+	{
+		ft_trace_carre(p->taille, p, *pos, rgb_to_hexa(COLOR_NEW));
+		pos->x += p->taille.x;
+	}
+	if (str[i] == LETTER_2 + 32)
+	{
+		ft_trace_carre(p->taille, p, *pos, rgb_to_hexa(COLOR_NEW));
+		pos->x += p->taille.x;
+	}
+	else if (str[i] == LETTER_1)
+	{
+		ft_trace_carre(p->taille, p, *pos, rgb_to_hexa(COLOR_J1));
+		pos->x += p->taille.x;
+	}
+	else if (str[i] == LETTER_2)
+	{
+		ft_trace_carre(p->taille, p, *pos, rgb_to_hexa(COLOR_J2));
+		pos->x += p->taille.x;
+	}
+	else if (str[i] == '.')
+		pos->x += p->taille.x;
+}
+
 void		ft_trace_ligne(char *str, t_pos taille, t_mlx *p, t_pos *pos)
 {
 	int i;
@@ -42,28 +63,8 @@ void		ft_trace_ligne(char *str, t_pos taille, t_mlx *p, t_pos *pos)
 	pos->x = 0;
 	while (str[i])
 	{
-		if (str[i] == LETTER_1 + 32)
-		{
-			ft_trace_carre(taille, p, *pos, rgb_to_hexa(102, 51, 255));
-			pos->x += taille.x;
-		}
-		if (str[i] == LETTER_2 + 32)
-		{
-			ft_trace_carre(taille, p, *pos, rgb_to_hexa(102, 51, 255));
-			pos->x += taille.x;
-		}
-		else if (str[i] == LETTER_1)
-		{
-			ft_trace_carre(taille, p, *pos, rgb_to_hexa(255, 51, 51));
-			pos->x += taille.x;
-		}
-		else if (str[i] == LETTER_2)
-		{
-			ft_trace_carre(taille, p, *pos, rgb_to_hexa(220, 120, 154));
-			pos->x += taille.x;
-		}
-		else if (str[i] == '.')
-			pos->x += taille.x;
+		p->taille = taille;
+		ft_trace_ligne_cond(str, p, pos, i);
 		i++;
 	}
 }
@@ -71,28 +72,24 @@ void		ft_trace_ligne(char *str, t_pos taille, t_mlx *p, t_pos *pos)
 static void	ft_read_size(t_pos *p, int fd)
 {
 	char	*line;
-	int		i;
 	int		ret;
+	int		i;
 
 	i = DECAL_X;
 	while ((ret = get_next_line(fd, &line)))
 	{
+		(TERMINAL) ? ft_putendl(line) : NULL;
 		if (ft_strstr(line, "Plateau"))
 		{
 			i = 8;
 			break ;
 		}
 		if (ft_strstr(line, "=="))
-		{
-			ft_putstr(line);
 			ft_exit(2);
-		}
 		ft_strdel(&line);
 	}
-	if (ret != 1)
-		ft_exit(4);
-	if (i == 0)
-		ft_exit(-1);
+	(ret != 1) ? ft_exit(4) : 0;
+	(i == 0) ? ft_exit(-1) : 0;
 	p->y = ft_atoi(line + i);
 	i += ft_nbrlen(p->y) + 1;
 	p->x = ft_atoi(line + i);

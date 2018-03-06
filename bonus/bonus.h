@@ -6,7 +6,7 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/29 16:36:57 by vguerand          #+#    #+#             */
-/*   Updated: 2018/03/06 08:24:07 by vguerand         ###   ########.fr       */
+/*   Updated: 2018/03/06 18:12:30 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ void				mlx_pixel_put_to_image(t_mlx p, int x, int y, int color);
 
 void				ft_trace_carre(t_pos taille, t_mlx *p, t_pos pos, int \
 					color);
+
+void		ft_put_piece(t_mlx *p, t_pos pos, int color, int free_bol);
 
 int					rgb_to_hexa(int r, int g, int b);
 
