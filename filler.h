@@ -6,7 +6,7 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/28 15:01:43 by vguerand          #+#    #+#             */
-/*   Updated: 2018/03/02 04:40:49 by vguerand         ###   ########.fr       */
+/*   Updated: 2018/03/06 00:40:36 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,13 +67,16 @@ typedef struct		s_tab
 {
 	char 			letter_1;
 	char 			letter_2;
+	int 			cond;
 	t_sol 			*sol;
 	t_star 			*star;
 	t_mob 			plateau;
 	t_mob 			piece;
 }					t_tab;
 
-t_pos 	find_nbr_sol(t_sol *sol, t_pos coord, int zone);
+t_pos 				find_nbr_sol(t_sol *sol, t_pos coord, int zone);
+
+t_star 				*ft_new_star(t_pos pos);
 
 t_pos 				find_sol(t_sol *sol, t_pos coord, int zone);
 

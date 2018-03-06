@@ -6,7 +6,7 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/28 18:30:34 by vguerand          #+#    #+#             */
-/*   Updated: 2018/03/03 16:53:35 by vguerand         ###   ########.fr       */
+/*   Updated: 2018/03/06 00:59:32 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,9 @@ t_pos 		ft_find_next(t_sol *sol, t_pos pos)
 	double tmp_int;
 	t_pos 	l_aff;
 
-	ft_putstr_fd("\n find _next", 3);
 	tmp = sol;
 	l_aff = pos;
 	dist = (double)INIT;
-	ft_putstr_fd("WHY", 3);
 	while (tmp)
 	{
 		if (pos.x == tmp->pos.x && pos.y == tmp->pos.y)
@@ -46,9 +44,6 @@ t_pos 		ft_find_next(t_sol *sol, t_pos pos)
 			tmp_int = fabs(ft_distance(pos, tmp->pos));
 		if (tmp_int < dist)
 		{
-			// ft_putnbr_fd(tmp->pos.x - DECAL_X, 3);
-			// ft_putstr_fd("\t", 3);
-			// ft_putnbr_fd(tmp->pos.y - DECAL_Y, 3);
 			dist = tmp_int;
 			l_aff = tmp->pos;
 		}
@@ -91,9 +86,7 @@ int ft_sol_opti(t_tab *p, t_star *header)
 	{
 		pos = tmp->pos;
 		if (p->sol->next)
-		{
 			tmp->pos = ft_find_next(p->sol->next, pos);
-		}
 		else
 		{
 			ft_putstr_fd("0 0\n", 3);
@@ -103,7 +96,7 @@ int ft_sol_opti(t_tab *p, t_star *header)
 		if (pos.x == tmp->pos.x && pos.y == tmp->pos.y)
 			tmp_int = 0;
 		else
-			tmp_int = fabs(ft_distance(pos, tmp->pos));
+			tmp_int = ft_distance(pos, tmp->pos);
 		if (tmp_int < dist)
 		{
 			dist = tmp_int;
@@ -126,9 +119,20 @@ int ft_sol_opti(t_tab *p, t_star *header)
 
 int ft_solv(t_tab *p)
 {
+	t_pos pos;
+
 	ft_read(&p->plateau, 0);
 	ft_read(&p->piece, 1);
-	p->star = ft_return_star(p->plateau, p->letter_2);
+	pos.x = 0;
+	pos.y = p->plateau.max.y;
+	if (p->cond > p->plateau.max.x / 4 || p->plateau.max.x <= 50)
+		p->star = ft_return_star(p->plateau, p->letter_2);
+	else
+	{
+		p->star = ft_new_star(pos);
+		p->star->next = ft_new_star(pos);
+	}
+	p->cond++;
 	p->sol = ft_find_sol(*p);
 	if (MODE == 1)
 		return (ft_sol_opti(p, p->star));

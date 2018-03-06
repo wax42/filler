@@ -6,32 +6,38 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 15:20:54 by vguerand          #+#    #+#             */
-/*   Updated: 2018/03/05 17:14:10 by vguerand         ###   ########.fr       */
+/*   Updated: 2018/03/06 00:42:23 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
+// int ft_check_y(t_mob *p, int x, int y, int letter)
+// {
+	// if (y >= DECAL_Y && x < p->max.x - 1)
+		// ft_check_y()
+// }
+
 void ft_put_star(t_mob *p, int x, int y, char letter)
 {
 	if (p->tab[y][x] == letter)
 	{
-		if (y != DECAL_Y)
+		if (y >= DECAL_Y)
 		{
 			if (p->tab[y - 1][x] != LETTER_1 && p->tab[y - 1][x] != LETTER_2)
 				p->tab[y - 1][x] = '*';
 		}
-		if (y >= p->max.y)
+		if (y < p->max.y - 1)
 		{
 			if (p->tab[y + 1][x] != LETTER_1 && p->tab[y + 1][x] != LETTER_2)
 				p->tab[y + 1][x] = '*';
 		}
-		if (x >= p->max.x)
+		if (x < p->max.x - 1)
 		{
 			if (p->tab[y][x + 1] != LETTER_1 && p->tab[y][x + 1] != LETTER_1)
 				p->tab[y][x + 1] = '*';
 		}
-		if (x != DECAL_X)
+		if (x >= DECAL_X)
 		{
 			if (p->tab[y][x - 1] != LETTER_1 && p->tab[y][x - 1] != LETTER_2)
 				p->tab[y][x - 1] = '*';
@@ -88,13 +94,12 @@ t_star 		*ft_return_star(t_mob p, char letter)
 			// ft_putchar_fd(p.tab[pos.y][pos.x], 3);
 			if (p.tab[pos.y][pos.x] == '*')
 			{
-				ft_putstr_fd("trouver une solutiion", 3);
 				tmp->next = ft_new_star(pos);
 				tmp = tmp->next;
 			}
 			pos.x++;
 		}
-		// ft_putchar_fd('\n', 3);
+	 	// ft_putchar_fd('\n', 3);
 		pos.y++;
 	}
 	return (header);
