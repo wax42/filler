@@ -6,7 +6,7 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/29 16:39:21 by vguerand          #+#    #+#             */
-/*   Updated: 2018/02/08 06:02:55 by vguerand         ###   ########.fr       */
+/*   Updated: 2018/03/06 08:27:04 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,21 +22,10 @@ static int		my_key_funct(int keycode, t_mlx *p)
 		ft_duo_read(p);
 		mlx_put_image_to_window(p->mlx, p->win, p->img, 0, 0);
 	}
-	if (keycode == 85)
-	{
-		while (1)
-		{
-			ft_duo_read(p);
-			mlx_put_image_to_window(p->mlx, p->win, p->img, 0, 0);
-			usleep(3);
-		}
-	}
-	p->mlx = 0;
-//	(keycode == 35) ? (p->graph.var_mouse = abs(p->var_mouse - 1)) : (p->var_mouse);
 	return (0);
 }
 
-int		ft_openfile(char *files)
+int				ft_openfile(char *files)
 {
 	int	fd;
 
@@ -46,7 +35,7 @@ int		ft_openfile(char *files)
 	return (fd);
 }
 
-int main(int argc, char **argv)
+int				main(int argc, char **argv)
 {
 	t_mlx p;
 

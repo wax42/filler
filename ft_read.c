@@ -6,14 +6,13 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/28 18:05:22 by vguerand          #+#    #+#             */
-/*   Updated: 2018/03/02 16:36:16 by vguerand         ###   ########.fr       */
+/*   Updated: 2018/03/06 08:48:06 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-
-void ft_first_read(t_tab *p)
+void			ft_first_read(t_tab *p)
 {
 	char *line;
 
@@ -33,10 +32,10 @@ void ft_first_read(t_tab *p)
 	ft_strdel(&line);
 }
 
-static  void ft_read_size(t_mob *p, int decal_x, int decal_y)
+static void		ft_read_size(t_mob *p, int decal_x, int decal_y)
 {
-	char *line;
-	int i;
+	char	*line;
+	int		i;
 
 	i = 0;
 	if ((get_next_line(0, &line), 3) == -1)
@@ -51,14 +50,16 @@ static  void ft_read_size(t_mob *p, int decal_x, int decal_y)
 	ft_strdel(&line);
 }
 
-void ft_read(t_mob *p, int bol)
+void			ft_read(t_mob *p, int bol)
 {
 	int y;
 	int decal_x;
 	int decal_y;
 
-	(bol == 0) ? (decal_x = DECAL_X) : (decal_x = 0);
-	(bol == 0) ? (decal_y = DECAL_Y) : (decal_y = 0);
+	decal_x = 0;
+	decal_y = 0;
+	(bol == 0) ? (decal_x = DECAL_X) : (0);
+	(bol == 0) ? (decal_y = DECAL_Y) : (0);
 	ft_read_size(p, decal_x, decal_y);
 	if (!(p->tab = (char**)malloc(sizeof(char*) * (p->max.y + 1))))
 		ft_putendl_fd("ERROR MALLOC", 3);
@@ -68,5 +69,5 @@ void ft_read(t_mob *p, int bol)
 		get_next_line(0, &p->tab[y]);
 		y++;
 	}
-	p->tab[y] =  NULL;
+	p->tab[y] = NULL;
 }

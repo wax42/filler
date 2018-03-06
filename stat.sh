@@ -6,7 +6,7 @@
 #    By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/28 23:04:33 by vguerand          #+#    #+#              #
-#    Updated: 2018/03/05 23:47:20 by vguerand         ###   ########.fr        #
+#    Updated: 2018/03/06 08:18:13 by vguerand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,13 +15,13 @@ player1=vguerand.filler
 
 # dont touch after this line --------------------------------------------------
 
-map=00;
+map=0;
 p1=0;
 p2=0;
 
 while [ $map != 3 ]
 do
-	n_turns=10
+	n_turns=3
 	while [ $n_turns != 0 ]
 	do
 		./filler_vm -f ./maps/map0$map -p1 \

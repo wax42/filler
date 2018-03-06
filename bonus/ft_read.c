@@ -6,18 +6,18 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/28 18:05:22 by vguerand          #+#    #+#             */
-/*   Updated: 2018/03/06 01:24:47 by vguerand         ###   ########.fr       */
+/*   Updated: 2018/03/06 08:30:06 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bonus.h"
 
-int		rgb_to_hexa(int r, int g, int b)
+int			rgb_to_hexa(int r, int g, int b)
 {
 	return ((r & 0xff) << 16) + ((g & 0xff) << 8) + (b & 0xff);
 }
 
-void ft_trace_carre(t_pos taille, t_mlx *p, t_pos pos, int color)
+void		ft_trace_carre(t_pos taille, t_mlx *p, t_pos pos, int color)
 {
 	t_pos val;
 
@@ -34,7 +34,7 @@ void ft_trace_carre(t_pos taille, t_mlx *p, t_pos pos, int color)
 	}
 }
 
-void ft_trace_ligne(char *str, t_pos taille, t_mlx *p, t_pos *pos)
+void		ft_trace_ligne(char *str, t_pos taille, t_mlx *p, t_pos *pos)
 {
 	int i;
 
@@ -68,11 +68,11 @@ void ft_trace_ligne(char *str, t_pos taille, t_mlx *p, t_pos *pos)
 	}
 }
 
-static  void ft_read_size(t_pos *p, int fd)
+static void	ft_read_size(t_pos *p, int fd)
 {
-	char *line;
-	int i;
-	int ret;
+	char	*line;
+	int		i;
+	int		ret;
 
 	i = DECAL_X;
 	while ((ret = get_next_line(fd, &line)))
@@ -82,7 +82,7 @@ static  void ft_read_size(t_pos *p, int fd)
 			i = 8;
 			break ;
 		}
-		if (ft_strstr(line ,"=="))
+		if (ft_strstr(line, "=="))
 		{
 			ft_putstr(line);
 			ft_exit(2);
@@ -101,17 +101,16 @@ static  void ft_read_size(t_pos *p, int fd)
 	ft_strdel(&line);
 }
 
-void ft_read(t_mlx *p)
+void		ft_read(t_mlx *p)
 {
-	int y;
-	t_pos pos;
-	t_pos max;
-	char *line;
+	int		y;
+	t_pos	pos;
+	t_pos	max;
+	char	*line;
 
 	ft_read_size(&max, p->fd);
 	p->taille.x = WIN_X / max.x;
 	p->taille.y = WIN_Y / max.y;
-
 	pos.y = 0;
 	y = 0;
 	while (y < max.y)
@@ -119,7 +118,7 @@ void ft_read(t_mlx *p)
 		if (!get_next_line(p->fd, &line))
 			ft_exit(4);
 		ft_trace_ligne(line, p->taille, p, &pos);
-		(TERMINAL) ? ft_putendl(line): NULL;
+		(TERMINAL) ? ft_putendl(line) : NULL;
 		ft_strdel(&line);
 		pos.y += p->taille.y;
 		y++;

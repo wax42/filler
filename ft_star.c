@@ -6,19 +6,13 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 15:20:54 by vguerand          #+#    #+#             */
-/*   Updated: 2018/03/06 00:42:23 by vguerand         ###   ########.fr       */
+/*   Updated: 2018/03/06 08:41:17 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-// int ft_check_y(t_mob *p, int x, int y, int letter)
-// {
-	// if (y >= DECAL_Y && x < p->max.x - 1)
-		// ft_check_y()
-// }
-
-void ft_put_star(t_mob *p, int x, int y, char letter)
+void	ft_put_star(t_mob *p, int x, int y, char letter)
 {
 	if (p->tab[y][x] == letter)
 	{
@@ -45,8 +39,7 @@ void ft_put_star(t_mob *p, int x, int y, char letter)
 	}
 }
 
-
-void ft_creat_star(t_mob *p, char letter)
+void	ft_creat_star(t_mob *p, char letter)
 {
 	int y;
 	int x;
@@ -64,7 +57,7 @@ void ft_creat_star(t_mob *p, char letter)
 	}
 }
 
-t_star 		*ft_new_star(t_pos pos)
+t_star	*ft_new_star(t_pos pos)
 {
 	t_star *star;
 
@@ -74,11 +67,11 @@ t_star 		*ft_new_star(t_pos pos)
 	return (star);
 }
 
-t_star 		*ft_return_star(t_mob p, char letter)
+t_star	*ft_return_star(t_mob p, char letter)
 {
-	t_pos pos;
-	t_star *tmp;
-	t_star *header;
+	t_pos	pos;
+	t_star	*tmp;
+	t_star	*header;
 
 	pos.y = -p.max.y;
 	pos.x = -p.max.x;
@@ -91,7 +84,6 @@ t_star 		*ft_return_star(t_mob p, char letter)
 		pos.x = DECAL_X;
 		while (pos.x < p.max.x)
 		{
-			// ft_putchar_fd(p.tab[pos.y][pos.x], 3);
 			if (p.tab[pos.y][pos.x] == '*')
 			{
 				tmp->next = ft_new_star(pos);
@@ -99,13 +91,12 @@ t_star 		*ft_return_star(t_mob p, char letter)
 			}
 			pos.x++;
 		}
-	 	// ft_putchar_fd('\n', 3);
 		pos.y++;
 	}
 	return (header);
 }
 
-void aff(t_pos pos)
+void	aff(t_pos pos)
 {
 	ft_putnbr(pos.y - DECAL_Y);
 	ft_putchar(' ');

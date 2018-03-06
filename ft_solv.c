@@ -6,7 +6,7 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/28 18:30:34 by vguerand          #+#    #+#             */
-/*   Updated: 2018/03/06 01:43:42 by vguerand         ###   ########.fr       */
+/*   Updated: 2018/03/06 07:55:08 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,8 +98,8 @@ int			ft_solv(t_tab *p)
 	ft_read(&p->plateau, 0);
 	ft_read(&p->piece, 1);
 	pos.x = 0;
-	pos.y = p->plateau.max.y;
-	if (p->cond > p->plateau.max.x / 4 || p->plateau.max.x <= 50)
+	pos.y = p->plateau.max.y - (p->cond * 4);
+	if (p->cond > p->plateau.max.x / 4 || p->plateau.max.x <= 40)
 		p->star = ft_return_star(p->plateau, p->letter_2);
 	else
 	{
