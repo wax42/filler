@@ -6,7 +6,7 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/28 15:01:43 by vguerand          #+#    #+#             */
-/*   Updated: 2018/03/06 01:49:40 by vguerand         ###   ########.fr       */
+/*   Updated: 2018/03/08 14:57:45 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # define DECAL_Y 1
 # define LETTER_1 'O'
 # define LETTER_2 'X'
-# define MODE 1
 # define INIT 100000
 
 # include <stdio.h>
@@ -44,6 +43,7 @@ typedef struct		s_mob
 typedef struct		s_sol
 {
 	t_pos			pos;
+	t_pos			aff;
 	struct s_sol	*next;
 }					t_sol;
 
@@ -68,9 +68,7 @@ void				ft_free(t_tab *p);
 
 void				aff(t_pos pos);
 
-int					ft_place(t_tab p, int x, int y, t_pos *pos);
-
-t_sol				*ft_find_sol(t_tab p);
+t_sol				*ft_find_sol(t_tab *p);
 
 void				ft_read(t_mob *p, int bol);
 

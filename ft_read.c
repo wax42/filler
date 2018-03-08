@@ -6,7 +6,7 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/28 18:05:22 by vguerand          #+#    #+#             */
-/*   Updated: 2018/03/06 08:48:06 by vguerand         ###   ########.fr       */
+/*   Updated: 2018/03/08 13:13:03 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void		ft_read_size(t_mob *p, int decal_x, int decal_y)
 	int		i;
 
 	i = 0;
-	if ((get_next_line(0, &line), 3) == -1)
+	if ((get_next_line(0, &line)) == -1)
 		ft_putendl_fd("ERROR GNL", 3);
 	if (ft_strstr(line, "Plateau"))
 		i = 8;

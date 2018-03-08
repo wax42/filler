@@ -6,7 +6,7 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/28 14:59:19 by vguerand          #+#    #+#             */
-/*   Updated: 2018/03/06 08:14:31 by vguerand         ###   ########.fr       */
+/*   Updated: 2018/03/08 15:16:01 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_free(t_tab *p)
 	t_sol	*tmp;
 
 	tmp = p->sol;
-	ft_lst_free_next(tmp->next);
+	ft_lst_free_next(tmp);
 	y = -1;
 	while (++y < p->plateau.max.y)
 		ft_strdel(&p->plateau.tab[y]);
