@@ -6,7 +6,7 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/28 15:01:43 by vguerand          #+#    #+#             */
-/*   Updated: 2018/03/08 14:57:45 by vguerand         ###   ########.fr       */
+/*   Updated: 2018/03/08 15:25:19 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ t_sol				*ft_find_sol(t_tab *p);
 
 void				ft_read(t_mob *p, int bol);
 
-void				ft_first_read(t_tab *p);
+int					ft_first_read(t_tab *p);
 
 int					ft_solv(t_tab *p);
 

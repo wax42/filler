@@ -6,13 +6,13 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/28 18:05:22 by vguerand          #+#    #+#             */
-/*   Updated: 2018/03/08 13:13:03 by vguerand         ###   ########.fr       */
+/*   Updated: 2018/03/08 15:26:54 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-void			ft_first_read(t_tab *p)
+int				ft_first_read(t_tab *p)
 {
 	char *line;
 
@@ -28,8 +28,9 @@ void			ft_first_read(t_tab *p)
 		p->letter_2 = 'O';
 	}
 	else
-		ft_putstr("ERROR\n");
+		return (0);
 	ft_strdel(&line);
+	return (1);
 }
 
 static void		ft_read_size(t_mob *p, int decal_x, int decal_y)

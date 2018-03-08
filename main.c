@@ -6,7 +6,7 @@
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/28 14:59:19 by vguerand          #+#    #+#             */
-/*   Updated: 2018/03/08 15:16:01 by vguerand         ###   ########.fr       */
+/*   Updated: 2018/03/08 15:25:03 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ int		main(void)
 {
 	t_tab p;
 
-	ft_first_read(&p);
+	if (ft_first_read(&p) == 0)
+		return (0);
 	while (1)
 	{
 		if (ft_solv(&p) == 0)

@@ -6,7 +6,7 @@
 #    By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/28 15:39:16 by vguerand          #+#    #+#              #
-#    Updated: 2018/03/06 08:15:40 by vguerand         ###   ########.fr        #
+#    Updated: 2018/03/08 15:20:23 by vguerand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,6 @@ clean:
 
 fclean: clean
 	make -C libft/ fclean
-	/bin/rm -f $(NAME)
+	/bin/rm -f players/$(NAME)
 
 re: fclean all

@@ -28,6 +28,6 @@ clean:
 
 fclean: clean
 	make -C ../libft/ fclean
-	/bin/rm -f $(NAME)
+	/bin/rm -f ../$(NAME)
 
 re: fclean all
